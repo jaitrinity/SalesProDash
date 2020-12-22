@@ -1,1 +1,66 @@
-<p>login-page works!</p>
+<main class="Background" *ngIf='ShowLoading'>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>    
+</main>
+
+<section>
+    <div class="FormContainer">
+        
+        <div class="FormHeading">
+            <h2>Sales Pro</h2>
+            <h6>By Trinity</h6>
+
+            <div>
+                <span>Login</span>
+                <span>Sign Up</span>
+            </div>
+        </div>
+
+        <div class="MainForm smootheffect">
+            <form #LoginForm = "ngForm" (ngSubmit)='OnSubmitting()'>
+                <div class="FormInputFields">
+                    <h1>Sign In to Your Dashboard</h1>
+
+
+                    <mat-form-field appearance="legacy" color="primary" hideRequiredMarker>
+                        <mat-label>Username</mat-label>
+                        <input [(ngModel)]="usermodel.username" name="username" matInput placeholder="Employee ID" required #uname='ngModel'>
+                        <mat-error *ngIf="uname.touched && uname.invalid">
+                            Username is <strong>required</strong>
+                          </mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="legacy" color="primary" hideRequiredMarker>
+                        <mat-label>Password</mat-label>
+                        <input [(ngModel)]="usermodel.password" name="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Enter Password" required #pass='ngModel'>
+                        <mat-error *ngIf="pass.touched && pass.invalid">
+                            password is <strong>required</strong>
+                          </mat-error>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+    
+                    <mat-error *ngIf="invalid">
+                        INVALID <strong>Username</strong> or <strong>Password</strong>
+                    </mat-error>
+                    <div style="text-align: end;">
+                        <button mat-raised-button [disabled]='LoginForm.form.invalid' [class.Activebutton]='!LoginForm.form.invalid'>
+                            Submit
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+</section>

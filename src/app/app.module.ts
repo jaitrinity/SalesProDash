@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MatButtonModule } from "@angular/material/button";
 import { MainScreenComponent } from './main-screen/main-screen.component';
@@ -28,6 +29,16 @@ import { MappingComponent } from './ComponentViews/mapping/mapping.component';
 import { KPIComponent } from './ComponentViews/kpi/kpi.component';
 import { HelpComponent } from './ComponentViews/help/help.component';
 import { MapViewComponent } from './ComponentViews/map-view/map-view.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { HttpClientModule } from "@angular/common/http";
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MainServiceService } from './Services/main-service.service';
+import { NotificationComponent } from './notification/notification.component';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { NotifierService } from './Services/notifier.service';
+import { AuthGuardGuard } from './Services/auth-guard.guard';
+
 
 @NgModule({
   declarations: [
@@ -42,26 +53,34 @@ import { MapViewComponent } from './ComponentViews/map-view/map-view.component';
     MappingComponent,
     KPIComponent,
     HelpComponent,
-    MapViewComponent
+    MapViewComponent,
+    ErrorPageComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatFormFieldModule,
     LayoutModule,
     MatToolbarModule,
+    HttpClientModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatIconModule,
     MatListModule,
     MatGridListModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [MainServiceService, NotifierService, AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
