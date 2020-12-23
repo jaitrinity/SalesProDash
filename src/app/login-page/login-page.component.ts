@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, Event } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { EmpDetailsProviderService } from '../Services/emp-details-provider.service';
 import { MainServiceService } from '../Services/main-service.service';
 import { User } from '../Structures/UserModel';
 
@@ -21,7 +22,7 @@ export class LoginPageComponent implements OnInit {
 
   ShowLoading = false;
 
-  constructor(private Mainserv: MainServiceService, private router: Router) {  }
+  constructor(private Mainserv: MainServiceService, private router: Router, private empchecksend : EmpDetailsProviderService) {  }
 
   // CREATING AN EMPTY USER.
   usermodel = new User('', '');
@@ -52,6 +53,7 @@ export class LoginPageComponent implements OnInit {
           if (datarecieved) {
             localStorage.setItem('Token', datarecieved['token']);
             this.router.navigate(['/Home']);
+            this.empchecksend.checkDetails('check');
           }
         }
       },

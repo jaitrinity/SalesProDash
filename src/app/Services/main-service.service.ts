@@ -56,28 +56,31 @@ export class MainServiceService {
   ResponseObject : ResponseStruct;
   HandleResponse(response : any){
     let statuskey = Object.keys(response)[0];
-    let message = "";
-    let status = '';
+    let errormessage = "";
+    let errorstatus = '';
     if (statuskey == 'error'){
       let errors = response[statuskey];
-      status = errors[status];
-      message = errors[message];
-      this.notifier.ShowNotification(status, message, "Dismiss" );
+      errorstatus = errors["status"];
+      errormessage = errors["message"];
+      if (errorstatus != '301'){
+        this.notifier.ShowNotification(errorstatus, errormessage, "Dismiss" );
+        return false;
+      }
     }
     else {
       this.ResponseObject = response[statuskey];
       if(this.ResponseObject.status != "200"){
         let datakeys = Object.keys(this.ResponseObject.Data)[0];
-        message = this.ResponseObject.Data[datakeys];
+        errormessage = this.ResponseObject.Data[datakeys];
         status = this.ResponseObject.status;
-        this.notifier.ShowNotification(status, message, "Dismiss");
+        this.notifier.ShowNotification(errorstatus, errormessage, "Dismiss");
+        return false;
       }
       else {
         return this.ResponseObject.Data;
       }
 
     }
-    return false;
   }
 
   //CHECKING IF THE USER IS LOGGED IN.

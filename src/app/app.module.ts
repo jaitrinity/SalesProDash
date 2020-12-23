@@ -38,6 +38,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { NotifierService } from './Services/notifier.service';
 import { AuthGuardGuard } from './Services/auth-guard.guard';
+import {MatRippleModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { AuthGuardGuard } from './Services/auth-guard.guard';
     LayoutModule,
     MatToolbarModule,
     HttpClientModule,
+    MatRippleModule,
     MatSidenavModule,
     MatSnackBarModule,
     MatIconModule,
