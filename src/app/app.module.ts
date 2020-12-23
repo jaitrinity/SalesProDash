@@ -30,7 +30,7 @@ import { KPIComponent } from './ComponentViews/kpi/kpi.component';
 import { HelpComponent } from './ComponentViews/help/help.component';
 import { MapViewComponent } from './ComponentViews/map-view/map-view.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule,HTTP_INTERCEPTORS } from "@angular/common/http";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MainServiceService } from './Services/main-service.service';
@@ -39,6 +39,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { NotifierService } from './Services/notifier.service';
 import { AuthGuardGuard } from './Services/auth-guard.guard';
 import {MatRippleModule} from '@angular/material/core';
+import { TokenInterceptorService } from './Services/token-interceptor.service';
 
 
 @NgModule({
@@ -82,7 +83,11 @@ import {MatRippleModule} from '@angular/material/core';
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [MainServiceService, NotifierService, AuthGuardGuard],
+  providers: [MainServiceService, NotifierService, AuthGuardGuard, {
+    provide : HTTP_INTERCEPTORS ,
+    useClass : TokenInterceptorService,
+    multi : true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

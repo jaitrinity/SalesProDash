@@ -58,7 +58,10 @@ export class MainScreenComponent implements AfterViewInit{
       res => {
         if(res){
           let datarecieved = this.Mainserv.HandleResponse(res);
-          if(datarecieved) {
+          if(datarecieved == 'Token Invalid'){
+            this.router.navigate(['/Login']);
+          }
+          else if(datarecieved) {
             let empdetails = datarecieved['EmpDetails'];
             this.empdetailsprovider.SendValidation(empdetails);
           }

@@ -66,6 +66,9 @@ export class MainServiceService {
         this.notifier.ShowNotification(errorstatus, errormessage, "Dismiss" );
         return false;
       }
+      else {
+        return "Token Invalid";
+      }
     }
     else {
       this.ResponseObject = response[statuskey];
