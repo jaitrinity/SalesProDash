@@ -1,5 +1,6 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1"> {{ EmpName | titlecase }} </h1>
+  <h6> {{ EmpRole | titlecase}} </h6>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
@@ -10,8 +11,9 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
+              <button mat-menu-item>Chart Type</button>
+              <button mat-menu-item>Date</button>
+              <button mat-menu-item>Range</button>
             </mat-menu>
           </mat-card-title>
         </mat-card-header>

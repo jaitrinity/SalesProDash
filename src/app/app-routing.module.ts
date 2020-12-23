@@ -18,6 +18,7 @@ const routes: Routes = [
   {path : '', redirectTo:'/Login', pathMatch:'full'},
   {path : 'Login', component : LoginPageComponent},
   {path : 'Home', component : MainScreenComponent, canActivate : [AuthGuardGuard] , children : [
+    {path : 'OverView', component : HomeComponent},
     {path : 'Attendance', component : AttendanceComponent},
     {path : 'Leaves', component : LeavesComponent},
     {path : 'Outlet', component : OutletComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
     {path : 'KPI', component : KPIComponent},
     {path : 'Help', component : HelpComponent}, 
     {path : 'MapView', component : MapViewComponent},
-    {path : '', component : HomeComponent }
+    {path : '', redirectTo : '/Home/OverView', pathMatch : 'full'}
   ]
 },
 {path: '**', component : ErrorPageComponent }

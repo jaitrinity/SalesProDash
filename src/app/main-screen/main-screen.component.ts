@@ -26,7 +26,7 @@ import { EmpDetailsProviderService } from '../Services/emp-details-provider.serv
     )
   ],
 })
-export class MainScreenComponent implements AfterViewInit{
+export class MainScreenComponent implements OnInit{
 
   // isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   //   .pipe(
@@ -46,7 +46,7 @@ export class MainScreenComponent implements AfterViewInit{
 
 
   //GETTING THE EMPLOYEE INFO AND SETTING IT TO THE SERVICE DATASOURCE.
-  ngAfterViewInit() {
+  ngOnInit () {
     let _EmpAndTokenCheck$ = this.Mainserv.GetService(this.ServiceName, this.parameters);
 
     _EmpAndTokenCheck$.pipe(

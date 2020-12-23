@@ -47,6 +47,7 @@ export class MainServiceService {
     }),
     catchError(err => {
       this.notifier.ShowNotification( "500" , "Server Timed Out: Please Try Again later", "Dismiss");
+      console.log(err);
       return of(false);
     })   
   );

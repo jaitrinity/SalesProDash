@@ -10,4 +10,5 @@ export interface EmpDetails {
     OrgName : string;
     DepName : string;
     Designation : string;
+    EmployeeId : string;
 }

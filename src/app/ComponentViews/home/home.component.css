@@ -1,5 +1,7 @@
 .grid-container {
   margin: 20px;
+  color: #404767;
+  font-family: 'Nunito', sans-serif;
 }
 
 .dashboard-card {
@@ -18,4 +20,15 @@
 
 .dashboard-card-content {
   text-align: center;
+}
+
+.grid-container > h6 {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.grid-container > h1 {
+  margin: 0;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
 }

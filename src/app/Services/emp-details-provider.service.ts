@@ -13,17 +13,14 @@ export class EmpDetailsProviderService {
   _GetEmpDetails$ = this._EmpDetailsOSub.asObservable();
 
 
-  private _CheckDetails = new Subject<String>();
-  _CheckDetails$ = this._EmpDetailsOSub.asObservable();
+  private _CheckDetails = new Subject<boolean>();
+  _CheckDetails$ = this._CheckDetails.asObservable();
 
   SendValidation(message : EmpDetails){
     this._EmpDetailsOSub.next(message);
     this.EmpDataSource = message;
+    this._CheckDetails.next(true);
   } 
-
-  checkDetails(message : string){
-    this._CheckDetails.next(message);
-  }
 
   constructor() { }
 }

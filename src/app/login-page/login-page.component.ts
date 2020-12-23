@@ -53,7 +53,6 @@ export class LoginPageComponent implements OnInit {
           if (datarecieved) {
             localStorage.setItem('Token', datarecieved['token']);
             this.router.navigate(['/Home']);
-            this.empchecksend.checkDetails('check');
           }
         }
       },
