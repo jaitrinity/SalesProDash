@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+}
+
+mat-divider {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .headerbar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .headerbar span {
+    width: fit-content;
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .headerbar >span:nth-child(1) {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2em;
+    font-weight: 800;
+  }
+  
+  .headerbar > span:nth-child(2) {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  .MainScreen {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      width: 90%;
+      height: 80%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .MapContainer {
+      width: 80%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mapwrapper {
+        height: 75%;
+        width: 100%;
+        background-color: white;
+        border-radius: 19px;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .mapwrapper > div:nth-child(1) {
+        width: 100%;
+        height: 8%;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        font-size: 1.5em;
+        background-color: #995AF9;
+        color: white;
+        border-radius: 19px 19px 0 0;
+        text-align: center;
+        padding-top: 7px;
+    }
+
+  .VandA {
+      margin-top: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  .VandA > div {
+      width: 48%;
+      background-color: white;
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  .SideSummary {
+      flex: 1;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+  #calender {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.CalenderWrapper {
+    height: fit-content;
+    width: 100%;
+    background-color: white;
+    border-radius: 19px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  .CalenderWrapper > div:nth-child(1) {
+      width: 100%;
+      height: 12%;
+      background-color: #9DC0D1;
+      color: white;
+      text-align: start;
+      padding-left: 20px;
+      font-size: 1.3em;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding-top: 8px;
+      border-radius: 19px 19px 0 0;
+  }
+
+  .SideSummary > div:nth-child(2) {
+      flex: 1;
+      margin-top: 10px;
+      background-color: white;
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+      border-radius: 19px;
+  }
+
+  .Empheading {
+      background-color: #2095F2;
+      color: white;
+      font-size: 1.4em;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      padding-left: 10px;
+      height: fit-content;
+      border-radius: 19px 19px 0 0;
+      padding-top: 7px;
+      padding-bottom: 7px;
+  }
+
+  .OutletsReg {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+  }
+
+  

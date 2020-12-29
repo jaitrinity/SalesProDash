@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmpDetailsProviderService } from 'src/app/Services/emp-details-provider.service';
 
 @Component({
   selector: 'app-mapping',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MappingComponent implements OnInit {
 
-  constructor() { }
+  //empname
+  empdatasource : any;
+  EmpName : string = '';
+  
+
+  constructor(private empdetails : EmpDetailsProviderService) { }
 
   ngOnInit(): void {
+    this.empdatasource = this.empdetails.EmpDataSource;
+    if(this.empdatasource){
+      this.EmpName = this.empdatasource['Name'];
+    }
   }
 
 }

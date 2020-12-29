@@ -1,1 +1,49 @@
-<p>attendance works!</p>
+<div class="headerbar">
+    <span>Attendance</span>
+    <span>{{EmpName}}</span>
+</div>
+<mat-divider></mat-divider>
+
+<mat-grid-list cols="3" rowHeight="28%" gutterSize='10px'>
+    <mat-grid-tile [colspan]="'1'" [rowspan]="2" style="box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);border-radius: 19px;">
+        <div class="CalenderWrapper">
+            <div>Calender</div>
+            <div id="calender">
+                <mat-calendar #calendar [(selected)]="selectedDate" (monthSelected)="monthSelected($event)" (selectedChange)="dateChanged($event)" >
+                </mat-calendar> 
+            </div>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div class="attendstats">
+            <div>
+                <div style="font-family: 'Nunito', san-serif; font-size: 2em; text-align: center; font-weight: 800;height: fit-content; padding-top: 15% ;">Start Time</div>
+            </div>
+            <div>
+                <div style="font-family: 'Nunito', san-serif; font-size: 2em; text-align: center; font-weight: 800;height: fit-content; padding-top: 15% ;">Stop Time</div>
+            </div>
+            <div>
+                <div style="font-family: 'Nunito', san-serif; font-size: 2em; text-align: center; font-weight: 800;height: fit-content; padding-top: 15% ;">Total Time</div>
+            </div>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="'1'" [rowspan]="1">
+        <div class="MonthStats">
+            <div></div>
+            <div></div>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="'1'" [rowspan]="2">
+        <div class="EmployeeSummary">
+            <div class="Eheading"> Employee Summary</div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="'2'" [rowspan]="1">
+        <div class="VisitStats">
+
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

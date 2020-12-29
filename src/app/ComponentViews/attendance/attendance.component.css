@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+.headerbar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .headerbar span {
+    width: fit-content;
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .headerbar >span:nth-child(1) {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2em;
+    font-weight: 800;
+  }
+  
+  .headerbar > span:nth-child(2) {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  mat-divider {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .mat-grid-list {
+      margin-top: 20px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .CalenderWrapper {
+      height: 100%;
+      width: 100%;
+      background-color: white;
+      border-radius: 19px;      
+    }
+
+    .CalenderWrapper > div:nth-child(1) {
+        width: 100%;
+        height: 10%;
+        background-color: #E82164;
+        color: white;
+        text-align: center;
+        font-size: 1.9em;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        letter-spacing: 2px;
+        padding-top: 8px;
+
+    }
+
+    #calender {
+        width: 36vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .attendstats {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        padding-bottom: 6px;
+        padding-top: 5px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .attendstats > div {
+        display: inline-block;
+        margin-left: 10px;
+        width: 32%;
+        height: 100%;
+        position: relative;
+        z-index: 100;
+        color: white;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .attendstats > div:nth-child(1) {
+        background-color: #009587;
+    }
+
+    .attendstats > div:nth-child(2) {
+        background-color: #F34235;
+    }
+
+    .attendstats > div:nth-child(3) {
+        background-color: #2095F2;
+    }
+
+    .MonthStats {
+        height: 100%;
+        width: 100%;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .MonthStats > div {
+        width: 47.5%;
+        background-color: white;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .VisitStats {
+        display: flex;
+        flex-direction: row;
+        height: 90%;
+        width: 99%;
+        margin: auto;
+        background-color: white;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .EmployeeSummary {
+        display: flex;
+        flex-direction: row;
+        height: 95.5%;
+        width: 95%;
+        border-radius: 19px;
+        margin: auto;
+        background-color: white;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);        
+    }
+
+    .Eheading {
+        width: 100%;
+        height: 12%;
+        font-weight: 800;
+        letter-spacing: 2px;
+        padding-top: 10px;
+        text-align: center;
+        color: white;
+        font-size: 1.9em;
+        font-family: 'Nunito', sans-serif;
+        border-radius: 19px 19px 0 0;
+        background-color: #995AF9;
+    }

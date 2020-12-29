@@ -47,6 +47,7 @@ import { ChartsModule } from "ng2-charts";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {CdkTreeModule} from '@angular/cdk/tree';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
     MatSelectModule,
     MatButtonToggleModule,
     MatDatepickerModule,
+    MatMomentDateModule,
     MatButtonModule,
     MatDividerModule,
     MatFormFieldModule,

@@ -1,0 +1,32 @@
+mat-divider {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .headerbar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .headerbar span {
+    width: fit-content;
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .headerbar >span:nth-child(1) {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2em;
+    font-weight: 800;
+  }
+  
+  .headerbar > span:nth-child(2) {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+  }

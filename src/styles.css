@@ -8,3 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin: 0px !important ;
     padding: 0px !important ;
 }
+
+.mat-calendar-header {
+    padding-top: 0px !important;
+}
