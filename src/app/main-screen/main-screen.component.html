@@ -17,10 +17,15 @@
       <li routerLink ='/Home/Help' [routerLinkActive] = '["ActiveRoute"]'> <img src="assets/Help.svg" alt="Leaves Icon" height="15px"> Help</li>
       <li routerLink ='/Home/MapView' [routerLinkActive] = '["ActiveRoute"]'> <img src="assets/MapView.svg" alt="Leaves Icon" height="15px"> Map View</li>
     </ul>
+
+      <button mat-button (click)='Logout()' style="position: absolute; bottom: 10px; left: 18px;">
+        Logout
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
             
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar style="position: sticky; top: 0; z-index: 20;">
       <button
         type="button"
         aria-label="Toggle sidenav"

@@ -1,26 +1,323 @@
-<div class="grid-container">
-  <h1 class="mat-h1"> {{ EmpName | titlecase }} </h1>
-  <h6> {{ EmpRole | titlecase}} </h6>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
+<h1 id='Empname'> {{EmpName}} </h1>
+<h5 id='Emprole'> {{EmpRole}} </h5>
+
+<main class="StatsView">
+  <div class="VisitStats">
+    <span class="Vheading">Visit Stats</span>
+    <mat-card style="padding: 0;">
+      
+      <mat-tab-group mat-align-tabs='end' style="width: 80%;" (selectedTabChange)='tabChangeVisits($event)'>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>date_range</mat-icon>
+              Monthly
+            </ng-template>
+            <canvas #MOutReg baseChart width="40vh" height="16vh"
+                        [datasets]="MVisitData"
+                        [labels]="MVisitLabels"
+                        [options]="MVisitOptions"
+                        [legend]="MOutRegLegeds"
+                        [chartType]="MVisitChartType"
+                        [colors]='MVisitColors'
+                        [plugins]='MVisitPlugins'>
+            </canvas>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>date_range</mat-icon>
+              Yearly
+            </ng-template>
+            <canvas #YOutReg baseChart width="40vh" height="16vh"
+                        [datasets]="YVisitData"
+                        [labels]="YVisitLabels"
+                        [options]="YVisitOptions"
+                        [legend]="YVisitLegend"
+                        [chartType]="YVisitChartType"
+                        [colors]="YVisitColors"
+                        [plugins]="YVisitPlugins">
+            </canvas>
+          </mat-tab>
+      </mat-tab-group>
+
+      <div id="VisitSummary">
+        <div>
+          <mat-form-field class='VisitMonth' appearance="fill" style="width:0px;visibility:hidden;">
+            <input matInput [matDatepicker]="VisitMonth" [formControl]="VisitDate">
+            <mat-datepicker #VisitMonth touchUi 
+                            [startView]='CurIndexVisitsDone ? "multi-year" : "year"'
+                            (yearSelected)="HandleYear($event, VisitMonth, 'VisitCard')"
+                            (monthSelected)="MonthHandler($event, VisitMonth, 'VisitCard')"></mat-datepicker>
+          </mat-form-field>
+          <button style="transform: scale(0.8);" mat-icon-button (click)="VisitMonth.open()">
+            <mat-icon>today</mat-icon>
+          </button>
+          <span style="vertical-align: middle; font-size: 0.8em;">Month</span>
+        </div>
+
+        <!-- CONTAINER FOR MONTH RANGE PICKER. -->
+        <div>
+          <mat-form-field class='VisitsMonthRange' appearance="fill" style="width:0px;visibility:hidden;">
+            <mat-date-range-input [rangePicker]='VisitsMonthRange'>
+              <input matStartDate>
+              <input matEndDate>
+            </mat-date-range-input>
+            <mat-date-range-picker #VisitsMonthRange touchUi
+                                    startView='CurIndexVisitsDone ? "multi-year" : "year'></mat-date-range-picker>
+          </mat-form-field>
+          <button style="transform: scale(0.8);" mat-icon-button (click)='VisitsMonthRange.open()'>
+            <mat-icon>date_range</mat-icon>
+          </button>
+          <span style="vertical-align: middle; font-size: 0.8em;">Range</span>
+        </div>
+
+        <!-- CONTAINER FOR CHANGING THE CHARTS. -->
+        <div style="position: relative; top: 10px;">
+          <button style="transform: scale(0.8);" mat-icon-button [matMenuTriggerFor]="chartTypes">
+            <mat-icon>insights</mat-icon>
+          </button>
+          <mat-menu #chartTypes="matMenu">
+            <button mat-menu-item (click)='ChangeChartType("line", "VisitsDone")'>
+              <mat-icon>stacked_line_chart</mat-icon>
+              <span>Line Chart</span>
             </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Chart Type</button>
-              <button mat-menu-item>Date</button>
-              <button mat-menu-item>Range</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
+            <button mat-menu-item (click)='ChangeChartType("bar", "VisitsDone")'>
+              <mat-icon>bar_chart</mat-icon>
+              <span>Bar Chart</span>
+            </button>
+            <button mat-menu-item (click)='ChangeChartType("pie", "VisitsDone")'>
+              <mat-icon>pie_chart</mat-icon>
+              <span>Pie Chart</span>
+            </button>
+            <button mat-menu-item (click)='ChangeChartType("doughnut", "VisitsDone")'>
+              <mat-icon>track_changes</mat-icon>
+              <span>Doughnut Chart</span>
+            </button>
+          </mat-menu>
+          <span style="vertical-align: middle; font-size: 0.8em;">Chart</span>
+        </div>
+      </div>
+
+    </mat-card>
+
+    <mat-card style="display: flex; flex-direction: row; padding: 0;">
+      <mat-tab-group mat-align-tabs='end' style="width: 80%;" (selectedTabChange)='tabchangedMostNLeast($event)'>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>trending_up</mat-icon>
+            Most Visited
+          </ng-template>
+          <canvas #MOutReg baseChart width="40vh" height="16vh"
+                      [data]="MostOutData"
+                      [labels]="MostOutLabels"
+                      [options]="MostOutOptions"
+                      [legend]="MostOutLegends"
+                      [chartType]="MostOutChartType"
+                      [colors]='MostOutColors'
+                      [plugins]='MostOutPlugins'>
+          </canvas>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>trending_down</mat-icon>
+            Least Visited
+          </ng-template>
+          <canvas #YOutReg baseChart width="40vh" height="16vh"
+                      [data]="LeastOutData"
+                      [labels]="LeastOutLabels"
+                      [options]="LeastOutOptions"
+                      [legend]="LeastOutLegends"
+                      [chartType]="LeastOutChartType"
+                      [colors]="YVisitColors"
+                      [plugins]="LeastOutPlugins">
+          </canvas>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div id="VisitSummary">
+
+      <!-- CONTAINER FOR CHANGING THE CHARTS. -->
+      <div style="position: relative; top: 10px; margin-top: 70px;">
+        <button style="transform: scale(0.8);" mat-icon-button [matMenuTriggerFor]="chartTypesFrMnL">
+          <mat-icon>insights</mat-icon>
+        </button>
+        <mat-menu #chartTypesFrMnL="matMenu">
+          <button mat-menu-item (click)='ChangeChartType("pie", "MnLChart")'>
+            <mat-icon>pie_chart</mat-icon>
+            <span>Pie Chart</span>
+          </button>
+          <button mat-menu-item (click)='ChangeChartType("doughnut", "MnLChart")'>
+            <mat-icon>track_changes</mat-icon>
+            <span>Doughnut Chart</span>
+          </button>
+        </mat-menu>
+        <span style="vertical-align: middle; font-size: 0.8em;">Chart</span>
+      </div>
+    </div>
+      
+    </mat-card>
+  </div>
+
+  <div class="OutARevStats">
+    <mat-card style="padding: 0; display: flex; flex-direction: row;">
+      <span class="Oheading">Outlet Registered</span>
+
+      
+      <mat-tab-group mat-align-tabs='end' style="width: 80%;" (selectedTabChange)='tabchangedOutReg($event)'>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>date_range</mat-icon>
+            Monthly
+          </ng-template>
+          <canvas #MOutReg baseChart width="40vh" height="16vh"
+                      [datasets]="MOutRegData"
+                      [labels]="MOutRegLabels"
+                      [options]="MOutRegOptions"
+                      [legend]="MOutRegLegeds"
+                      [chartType]="MOutRegChartType"
+                      [colors]='MOutRegColors'
+                      [plugins]='MOutRegPlugins'>
+          </canvas>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>date_range</mat-icon>
+            Yearly
+          </ng-template>
+          <canvas #YOutReg baseChart width="40vh" height="16vh"
+                      [datasets]="YOutRegData"
+                      [labels]="YOutRegLabels"
+                      [options]="YOutRegOptions"
+                      [legend]="YOutRegLegends"
+                      [chartType]="YOutRegChartType"
+                      [colors]="YOutRegColors"
+                      [plugins]="YOutRegPlugins">
+          </canvas>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div id="VisitSummary">
+      <div>
+        <mat-form-field class='OutletMonth' appearance="fill" style="width:0px;visibility:hidden;">
+          <input matInput [matDatepicker]="OutletMonth" [formControl]="OutletRegdate">
+          <mat-datepicker #OutletMonth touchUi 
+                          [startView]='CurIndexOutlet ? "multi-year" : "year"'
+                          (yearSelected)="HandleYear($event, OutletMonth, 'OutletCard')"
+                          (monthSelected)="MonthHandler($event, OutletMonth, 'OutletCard')"></mat-datepicker>
+        </mat-form-field>
+        <button style="transform: scale(0.8);" mat-icon-button (click)="OutletMonth.open()">
+          <mat-icon>today</mat-icon>
+        </button>
+        <span style="vertical-align: middle; font-size: 0.8em;">Month</span>
+      </div>
+
+      <!-- CONTAINER FOR MONTH RANGE PICKER. -->
+      <div>
+        <mat-form-field class='OutletMonthRange' appearance="fill" style="width:0px;visibility:hidden;">
+          <mat-date-range-input [rangePicker]='OutletMonthRange'>
+            <input matStartDate>
+            <input matEndDate>
+          </mat-date-range-input>
+          <mat-date-range-picker #OutletMonthRange touchUi
+                                  startView='CurIndexOutlet ? "multi-year" : "year'></mat-date-range-picker>
+        </mat-form-field>
+        <button style="transform: scale(0.8);" mat-icon-button (click)='OutletMonthRange.open()'>
+          <mat-icon>date_range</mat-icon>
+        </button>
+        <span style="vertical-align: middle; font-size: 0.8em;">Range</span>
+      </div>
+
+      <!-- CONTAINER FOR CHANGING THE CHARTS. -->
+      <div style="position: relative; top: 10px;">
+        <button style="transform: scale(0.8);" mat-icon-button [matMenuTriggerFor]="chartTypesFrOutlet">
+          <mat-icon>insights</mat-icon>
+        </button>
+        <mat-menu #chartTypesFrOutlet="matMenu">
+          <button mat-menu-item (click)='ChangeChartType("line", "OutletReg")'>
+            <mat-icon>stacked_line_chart</mat-icon>
+            <span>Line Chart</span>
+          </button>
+          <button mat-menu-item (click)='ChangeChartType("bar", "OutletReg")'>
+            <mat-icon>bar_chart</mat-icon>
+            <span>Bar Chart</span>
+          </button>
+          <button mat-menu-item (click)='ChangeChartType("pie", "OutletReg")'>
+            <mat-icon>pie_chart</mat-icon>
+            <span>Pie Chart</span>
+          </button>
+          <button mat-menu-item (click)='ChangeChartType("doughnut", "OutletReg")'>
+            <mat-icon>track_changes</mat-icon>
+            <span>Doughnut Chart</span>
+          </button>
+        </mat-menu>
+        <span style="vertical-align: middle; font-size: 0.8em;">Chart</span>
+      </div>
+    </div>
+    </mat-card>
+    <div class="RevenueStats">
+      <div class="RevComp">
+        <mat-card>
+          <span>
+            <button mat-icon-button (click)='viewSummary = !viewSummary' style="transform: scale(0.7); position: absolute; right: 0px; top: 0px; z-index: 1;">
+              <mat-icon>help</mat-icon>
+            </button>
+          </span>
+
+          <ng-template [ngIf]='!viewSummary'>
+            <span class="CHeading">Completion Rate</span> 
+            <div class="Count"> {{CompletionRate}} <span style="font-size: 20px;">%</span> </div>
+          </ng-template>
+
+          <ng-template [ngIf]='viewSummary'>
+            <div style='height: 75%;' class="OverViewSummary">
+              <div style="opacity: 0.7; font-size: 0.6em; margin-bottom: 5px;">
+                Overall summary of : <br> number of visits planned V/S number of visits completed.
+              </div>
+              <span> Total Planned Visits : {{TotalPlanned}} </span> <br>
+              <span> Total Completed Visits : {{TotalVisited}}</span>
+            </div>
+          </ng-template>
+          
+        </mat-card>
+        <mat-card>
+
+          <span>
+            <button mat-icon-button (click)='viewChart = !viewChart' style="transform: scale(0.7); position: absolute; right: 0px; top: 0px; z-index: 1;">
+              <mat-icon>help</mat-icon>
+            </button>
+          </span>
+
+          <ng-template [ngIf]='!viewChart'>
+            <div class="RevenueHeading">Total Revenue : </div>
+            <div class="Count"> {{SumRevenue}} <span style="font-size: 20px;">Rs</span> </div>
+          </ng-template>
+  
+          <ng-template [ngIf]='viewChart'>
+            <div class="revChart">
+              <canvas #YOutReg baseChart width="5vh"
+                               [data]="RevData"
+                               [labels]="RevLabels"
+                               [options]="RevOptions"
+                               [legend]="RevLegends"
+                               [chartType]="RevChartType"
+                               [colors]="RevColors"
+                               [plugins]="RevPlugins"></canvas>
+            </div>
+          </ng-template>  
+          
+        </mat-card>
+      </div>
+      <mat-card>
+
+        
       </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+    </div>
+  </div>
+
+  <h3>Planned Visits</h3>
+
+  <div class="PlannedVisits">
+    <mat-card></mat-card>
+    <mat-card></mat-card>
+    <mat-card></mat-card>
+  </div>
+</main>

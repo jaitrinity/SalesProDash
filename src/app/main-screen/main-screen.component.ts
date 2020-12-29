@@ -44,6 +44,12 @@ export class MainScreenComponent implements OnInit{
   ServiceName = 'GetEmpInfo';
   parameters = {};
 
+  //logout function
+  Logout() {
+    localStorage.clear();
+    this.router.navigate(["/Login"]);
+  }
+
 
   //GETTING THE EMPLOYEE INFO AND SETTING IT TO THE SERVICE DATASOURCE.
   ngOnInit () {

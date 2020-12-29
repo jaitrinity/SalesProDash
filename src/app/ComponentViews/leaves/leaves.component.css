@@ -1,3 +1,102 @@
 .full-width-table {
   width: 100%;
 }
+
+.headerbar {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerbar span {
+  width: fit-content;
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.headerbar >span:nth-child(1) {
+  font-family: 'Nunito', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.headerbar > span:nth-child(2) {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.TableContainer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#ViewSelect {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+#searchbar {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  -webkit-tap-highlight-color : transparent;
+  display: flex;
+  flex-direction: row;
+}
+
+.searchBox {
+  width: fit-content;
+  display: inline-block;
+}
+
+.filterSelect {
+  display: inline-block;
+  width: fit-content;
+}
+
+.filterSelect .mat-form-field {
+  width: 0px;
+  visibility: hidden;
+}
+
+.searchBox .mat-form-field-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+mat-divider {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+#TotalCount {
+  position: absolute;
+  font-size: 1.4em;
+  left: 10%;
+  top: 23%;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+}
+
+#DateFilter {
+  position: absolute;
+  right: 10%;
+  top: 23%;
+  font-family: 'Nunito', sans-serif;
+}

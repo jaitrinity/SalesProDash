@@ -1,34 +1,163 @@
-.grid-container {
-  margin: 20px;
-  color: #404767;
+* { 
+  box-sizing: border-box;
+}
+
+h1, h5 {
+  margin-left: 20px;
+}
+
+.mat-card {
+  padding: 10px;
+}
+
+#Empname {
   font-family: 'Nunito', sans-serif;
-}
-
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-}
-
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
-.dashboard-card-content {
-  text-align: center;
-}
-
-.grid-container > h6 {
-  margin: 0;
-  font-family: 'Nunito', sans-serif;
-}
-
-.grid-container > h1 {
-  margin: 0;
   font-weight: 700;
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+#Emprole {
   font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+}
+
+.StatsView {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+}
+
+.VisitStats, .OutARevStats {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.VisitStats .mat-card:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.VisitStats > .mat-card, .OutARevStats > .mat-card{
+  width: 49%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.RevenueStats {
+  width: 49%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.RevComp , .RevenueStats > .mat-card{
+  width: 47%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.RevComp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.RevComp > .mat-card {
+  height: 47%;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.RevComp > .mat-card:nth-child(1) {
+  background-color: #2095F2;
+  color: white;
+}
+
+.RevComp > .mat-card:nth-child(2) {
+  background-color: #E82164;
+  color: white;
+}
+
+.PlannedVisits {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.PlannedVisits > .mat-card {
+  width: 30%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+main > h3 {
+  font-size: 1.3em;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+}
+
+.VisitStats .mat-tab-group {
+  position: relative;
+}
+
+.VisitStats .mat-tab-labels {
+  transform: scale(0.7);
+}
+
+.Vheading {
+  position: absolute;
+  z-index: 2;
+  left: 40px;
+  top: 23.5%;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+#VisitSummary {
+  flex: 1;
+  background-color: #F9FAFD;
+  margin: 15px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+#VisitSummary > div {
+  color: #404767;
+  flex: 1;
+}
+
+.Oheading {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  top: 7%;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.Count {
+  font-family: 'Nunito', sans-serif;
+  margin-top: 10px;
+  font-size: 3.4em;
+  height: 45%;
+  text-align: center;
+  padding: 5%;
+  font-weight: 600;
+}
+
+.revChart {
+  position: relative;
 }

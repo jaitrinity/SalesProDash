@@ -40,6 +40,13 @@ import { NotifierService } from './Services/notifier.service';
 import { AuthGuardGuard } from './Services/auth-guard.guard';
 import {MatRippleModule} from '@angular/material/core';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ChartsModule } from "ng2-charts";
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import {CdkTreeModule} from '@angular/cdk/tree';
 
 
 @NgModule({
@@ -63,17 +70,24 @@ import { TokenInterceptorService } from './Services/token-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CdkTreeModule,
+    MatSelectModule,
+    MatButtonToggleModule,
+    MatDatepickerModule,
     MatButtonModule,
+    MatDividerModule,
     MatFormFieldModule,
     LayoutModule,
     MatToolbarModule,
     HttpClientModule,
     MatRippleModule,
     MatSidenavModule,
+    MatTabsModule,
     MatSnackBarModule,
     MatIconModule,
     MatListModule,
     MatGridListModule,
+    ChartsModule,
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,

@@ -118,12 +118,6 @@ img {
   vertical-align: middle;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
 .ActiveRoute {
   background-color: #6930CA;
   border: none;
