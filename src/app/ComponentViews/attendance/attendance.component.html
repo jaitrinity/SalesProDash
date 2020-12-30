@@ -6,9 +6,9 @@
 
 <mat-grid-list cols="3" rowHeight="28%" gutterSize='10px'>
     <mat-grid-tile [colspan]="'1'" [rowspan]="2" style="box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);border-radius: 19px;">
-        <div class="CalenderWrapper">
+        <div class="CalenderWrapperAttend">
             <div>Calender</div>
-            <div id="calender">
+            <div id="Ccalender">
                 <mat-calendar #calendar [(selected)]="selectedDate" (monthSelected)="monthSelected($event)" (selectedChange)="dateChanged($event)" >
                 </mat-calendar> 
             </div>

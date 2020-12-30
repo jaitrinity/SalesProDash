@@ -48,6 +48,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepickerModule,
     MatMomentDateModule,
     MatButtonModule,
+    MatExpansionModule,
     MatDividerModule,
     MatFormFieldModule,
     LayoutModule,

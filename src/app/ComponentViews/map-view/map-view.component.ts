@@ -12,7 +12,7 @@ import { EmpDetailsProviderService } from 'src/app/Services/emp-details-provider
 })
 export class MapViewComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('calendar') calendar: MatCalendar<MomentDateAdapter>;
+  @ViewChild('calendarMap') calendar: MatCalendar<MomentDateAdapter>;
   selectedDate: Moment;
 
   //empname
