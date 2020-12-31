@@ -52,7 +52,10 @@ export class PJPComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<PJPItem>;
 
+  ShowLoading = false;
+
   UpdateData() {
+    this.ShowLoading = true;
     //GETTING THE DATA
     let pjp$ = this.dataserv.GetService(this.ServiceName, this.Parameters);
     pjp$.pipe(
@@ -91,7 +94,7 @@ export class PJPComponent implements AfterViewInit, OnInit {
         }
       },
       err => console.log('http error', err),
-      () =>  console.log("Http Request Completed")
+      () =>  this.ShowLoading = false
     );
   }
 

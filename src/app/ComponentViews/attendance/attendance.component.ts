@@ -15,6 +15,8 @@ export class AttendanceComponent implements OnInit, AfterViewInit {
   @ViewChild('calendar') calendar: MatCalendar<MomentDateAdapter>;
   selectedDate: Moment;
 
+  ShowLoading = false;
+
   //empname
   empdatasource : any;
   EmpName : string = '';

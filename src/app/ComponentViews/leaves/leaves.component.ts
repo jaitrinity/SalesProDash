@@ -49,8 +49,11 @@ export class LeavesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<LeavesItem>;
 
+  ShowLoading = false;
+
   //FUNCTION FOR UPDATING THE DATA.
   UpdateData() {
+    this.ShowLoading = true;
     //GETTING THE LEAVES DATA 1ST TIME.
     let LeaveData$ = this.dataserv.GetService(this.ServiceName, this.Parameters);
     LeaveData$.pipe(
@@ -69,7 +72,9 @@ export class LeavesComponent implements AfterViewInit, OnInit {
           this.LeavesDataSource.sort = this.sort;
           this.LeavesDataSource.paginator = this.paginator;
         }
-      }
+      },
+      err => console.log(err),
+      () => this.ShowLoading = false,
     )
 
   }

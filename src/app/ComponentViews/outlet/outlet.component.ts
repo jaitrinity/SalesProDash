@@ -51,6 +51,8 @@ export class OutletComponent implements AfterViewInit, OnInit {
 
   dataSource: OutletDataSource;
 
+  ShowLoading = false;
+
   //SETTING THE PARAMETERS Dates.
   ddate = new Date();
   tdate = this.ddate.getDate();
@@ -68,6 +70,7 @@ export class OutletComponent implements AfterViewInit, OnInit {
   //FUNCTION FOR UPDATING THE DATA.
   UpdateData() {
     //GETTING THE DATA
+    this.ShowLoading = true;
     let OutletData$ = this.dataserv.GetService(this.ServiceName, this.Parameters);
 
     OutletData$.pipe(
@@ -135,7 +138,7 @@ export class OutletComponent implements AfterViewInit, OnInit {
           }
         },
         err => console.log('http error', err),
-        () => console.log("Http Request Completed")
+        () => this.ShowLoading = false,
       );
   }
 

@@ -49,9 +49,11 @@ export class HelpComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<HelpItem>;
 
+  ShowLoading = false;
 
   UpdateData() {
     //GETTING THE DATA
+    this.ShowLoading = true;
     let Help$ = this.dataserv.GetService(this.ServiceName, this.Parameters);
     Help$.pipe(
       this.dataserv.handleErrorPipe(),
@@ -72,7 +74,7 @@ export class HelpComponent implements AfterViewInit, OnInit {
         }
       },
       err => console.log('http error', err),
-      () =>  console.log("Http Request Completed")
+      () =>  this.ShowLoading = false,
     );
   }
 
