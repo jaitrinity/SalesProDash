@@ -69,18 +69,20 @@ export class PJPComponent implements AfterViewInit, OnInit {
           this.DisplayColSNC = datarecieved['SalesAndCollection']['Columns'];
           this.SNCcount = this.SalesAndCollectionSource.length;
           this.SalesAndCollectionSource = new MatTableDataSource(this.SalesAndCollectionSource);
+          this.SalesAndCollectionSource.paginator = this.paginator;
           this.SalesAndCollectionSource.sort = this.sort;
-          this.SalesAndCollectionSource.paginator = this.paginator;    
 
           this.CollectionSource = datarecieved['Collection']['data'];
           this.DisplayColClc = datarecieved['Collection']['Columns'];
           this.Clccount = this.CollectionSource.length;
           this.CollectionSource = new MatTableDataSource(this.CollectionSource);
+          this.CollectionSource.sort = this.sort;    
           
           this.OthersSource = datarecieved['Others']['data'];
           this.DisplayColOth = datarecieved['Others']['Columns'];
           this.Othcount = this.OthersSource.length;
           this.OthersSource = new MatTableDataSource(this.OthersSource);
+          this.OthersSource.sort = this.sort;
 
           this.TotalVisits = this.SNCcount + this.Othcount + this.Clccount;
         }
@@ -142,20 +144,22 @@ export class PJPComponent implements AfterViewInit, OnInit {
   ];
 
   //CONTROLLING THE VIEW OF THE COMPONENT.
-  CurView : string = '';
+  CurView : string = 'SalesNCollection';
   OnChangeView(val : string){
     this.CurView = val;
-    if(val === 'SalesNCollection'){
-      this.SalesAndCollectionSource.sort = this.sort;
-      this.SalesAndCollectionSource.paginator = this.paginator;
-    }
-    else if(val === 'Collection'){
-      this.CollectionSource.sort = this.sort;
-      this.CollectionSource.paginator = this.paginator;
-    }
-    else if(val === 'Others'){
-      this.OthersSource.sort = this.sort;
-      this.OthersSource.paginator = this.paginator;
+    switch (this.CurView) {
+      case 'SalesNCollection' : {
+        this.SalesAndCollectionSource.paginator = this.paginator;    
+        break;
+      }
+      case 'Collection' : {
+        this.CollectionSource.paginator = this.paginator;
+        break;
+      }
+      case 'Others' : {
+        this.OthersSource.paginator = this.paginator;
+        break;
+      }
     }
   }
 

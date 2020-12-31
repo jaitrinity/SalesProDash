@@ -4,6 +4,12 @@ html, body { height: 100%; width: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+
+.mat-tab-body-content {
+    overflow: hidden !important;
+  }
+  
+
 #searchbar .mat-form-field-wrapper {
     margin: 0px !important ;
     padding: 0px !important ;

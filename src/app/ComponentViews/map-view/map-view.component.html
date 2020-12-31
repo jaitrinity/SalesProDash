@@ -8,16 +8,36 @@
     <div class="MapContainer">
         <div class="mapwrapper">
             <div>Google Maps</div>
-            <div id="map" class="effect7"></div>
+            <div id="GoogleMap"> </div>
         </div>
         <div class="VandA">
-            <div>
-                
-            </div>
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar class="avatarImage"></div>
+                    <mat-card-title> Vist's To Outlets </mat-card-title>
+                    <mat-card-subtitle> {{Vcount}} : Visits Done </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    
+                </mat-card-content>
+            </mat-card>
 
-            <div>
-
-            </div>
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar class="avatarImage"></div>
+                    <mat-card-title> Attendance </mat-card-title>
+                    <mat-card-subtitle> Marked Attendance </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <ng-template [ngIf]='AttendanceObject == "NO_ATTENDANCE"'>
+                        <span>NO ATTENDANCE AVAILABLE ON THIS DATE <mat-icon style="position: relative; top: 7px; transform: scale(0.8);">error</mat-icon> </span>
+                    </ng-template>
+                    <ng-template [ngIf]="AttendanceObject && AttendanceObject != 'NO_ATTENDANCE'">
+                        <div style="display: flex; justify-content: space-between;">Start Time : {{Start_time}} <button mat-icon-button style="position: relative; top: -8px; transform: scale(0.7);"><mat-icon>where_to_vote</mat-icon></button></div>
+                        <div style="display: flex; justify-content: space-between;">Stop Time : {{Stop_time}} <button mat-icon-button style="position: relative; top: -8px; transform: scale(0.7);"><mat-icon>where_to_vote</mat-icon></button> </div>
+                    </ng-template>
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>
 
@@ -25,18 +45,20 @@
         <div class="CalenderWrapper">
             <div>Choose a Date</div>
             <div id="calender">
-                <mat-calendar #calendarMap [(selected)]="selectedDate" (monthSelected)="monthSelected($event)" (selectedChange)="dateChanged($event)" >
-                </mat-calendar> 
+                <mat-calendar #calendarMap [(selected)]="selectedDate" (selectedChange)="dateChanged($event)">
+                </mat-calendar>
             </div>
         </div>
         <div style="display: flex; flex-direction: column;">
             <div class="Empheading">
                 {{EmpName}}
             </div>
-            <div style="height: 10%; font-weight: 400; margin-top: 5px; margin-left: 5px;">Registered Outlets  </div>
+            <div style="height: 10%; font-weight: 400; margin-top: 15px; margin-left: 10px;">Registered Outlets </div>
             <mat-divider style="width: 80%; margin-left: auto; margin-right: auto;"></mat-divider>
             <div class="OutletsReg">
-                <button mat-button> Test </button>
+                <div style="padding-left: 10px; padding-right: 10px; display: flex; justify-content: space-between;" *ngFor='let butobj of ButtonObj'>
+                    <button mat-button (click)='ShowOutlets(butobj["FlagFrbutton"])'> {{butobj['Type']}} </button>
+                </div>
             </div>
         </div>
     </div>

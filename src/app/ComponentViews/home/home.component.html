@@ -1,6 +1,8 @@
 <h1 id='Empname'> {{EmpName}} </h1>
 <h5 id='Emprole'> {{EmpRole}} </h5>
 
+<mat-divider style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px;"></mat-divider>
+
 <main class="StatsView">
   <div class="VisitStats">
     <span class="Vheading">Visit Stats</span>
@@ -316,8 +318,19 @@
   <h3>Planned Visits</h3>
 
   <div class="PlannedVisits">
-    <mat-card></mat-card>
-    <mat-card></mat-card>
-    <mat-card></mat-card>
+    <mat-card *ngFor='let i of planvisitArray'>
+      <mat-card-header>
+        <div mat-card-avatar class="avatarImage"></div>
+        <mat-card-title> {{i.Name}} </mat-card-title>
+        <mat-card-subtitle> {{i.Purpose}} </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div> Visit Type :    <span style="display: inline-block; margin-left: 20px;">{{i.Vtype}}</span>  </div>
+        <div> Purpose :    <span style="display: inline-block; margin-left: 20px;">{{i.Purpose}}</span>  </div>
+        <div> Remark :    <span style="display: inline-block; margin-left: 20px;">{{i.Remark}}</span>  </div>
+        <div> Visit Date :    <span style="display: inline-block; margin-left: 20px;">{{i.VisitDate}}</span>  </div>
+        <div> Visit Time :    <span style="display: inline-block; margin-left: 20px;">{{i.VisitTime}}</span>  </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </main>
