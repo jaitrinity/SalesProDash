@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BaseUrl : '/OneNetworkApi/index.php'
+  BaseUrl : '/sampleapi/index.php'
 };
